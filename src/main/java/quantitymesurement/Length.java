@@ -1,32 +1,18 @@
 package quantitymesurement;
 
-import java.util.Objects;
-
 public class Length {
 
-    private static final double FEET_IN_INCH = 12.0;
+    public Unit unit;
 
-    public enum Unit{FEET, INCH};
-
-    private Unit unit;
-
-    private final double value;
+    public final double value;
 
     public Length(Unit unit, double value) {
         this.unit = unit;
         this.value = value;
     }
 
-    public Length(double value) {
-        this.value = value;
-    }
-
     public boolean compare(Length that) {
-        if(this.unit.equals(Unit.FEET) && that.unit.equals(Unit.FEET))
-            return Double.compare(this.value, that.value) == 0;
-        if(this.unit.equals(Unit.FEET) && that.unit.equals(Unit.INCH))
-            return Double.compare(this.value*FEET_IN_INCH, that.value) == 0;
-        return false;
+            return unit.compare(this,that);
     }
 
     @Override
