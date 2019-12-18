@@ -2,7 +2,7 @@ package quantitymesurement;
 
 public enum Unit {
 
-    FEET(12.0), INCH(1.0);
+    FEET(12.0), INCH(1.0), Yard(36.0);
 
     private double value;
 
