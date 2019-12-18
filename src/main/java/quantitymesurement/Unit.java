@@ -14,4 +14,7 @@ public enum Unit {
         return Double.compare(length1.unit.value*length1.value, length2.unit.value*length2.value)==0;
     }
 
+    public double getValueInInch(double value) {
+        return value*this.value;
+    }
 }
