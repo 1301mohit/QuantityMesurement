@@ -3,6 +3,7 @@ package quantitymeasurement;
 import org.junit.Assert;
 import org.junit.Test;
 import quantitymesurement.Length;
+import quantitymesurement.QuantityMesurementException;
 import quantitymesurement.Unit;
 
 public class quantityTest {
@@ -188,34 +189,43 @@ public class quantityTest {
 
     @Test
     public void given2InchAnd2Inch_ShouldReturn4Inch() {
-        Length inch1 = new Length(Unit.INCH, 2.0);
-        Length inch2 = new Length(Unit.INCH, 2.0);
-        double result = inch1.add(inch2);
-        Assert.assertEquals(4.0, result, 0.01);
+        try {
+            Length inch1 = new Length(Unit.INCH, 2.0);
+            Length inch2 = new Length(Unit.INCH, 2.0);
+            double result = inch1.add(inch2);
+            Assert.assertEquals(4.0, result, 0.01);
+        } catch (QuantityMesurementException e) { }
     }
 
     @Test
     public void given1FeetAnd2Inch_ShouldReturn14Inch() {
-        Length feet = new Length(Unit.FEET, 1.0);
-        Length inch = new Length(Unit.INCH, 2.0);
-        double result = feet.add(inch);
-        Assert.assertEquals(14.0, result, 0.01);
+        try {
+            Length feet = new Length(Unit.FEET, 1.0);
+            Length inch = new Length(Unit.INCH, 2.0);
+            double result = feet.add(inch);
+            Assert.assertEquals(14.0, result, 0.01);
+        } catch (QuantityMesurementException e) { }
+
     }
 
     @Test
     public void given1FeetAnd1Feet_ShouldReturn24Inch() {
-        Length feet1 = new Length(Unit.FEET, 1.0);
-        Length feet2 = new Length(Unit.FEET, 1.0);
-        double result = feet1.add(feet2);
-        Assert.assertEquals(24.0, result, 0.01);
+        try {
+            Length feet1 = new Length(Unit.FEET, 1.0);
+            Length feet2 = new Length(Unit.FEET, 1.0);
+            double result = feet1.add(feet2);
+            Assert.assertEquals(24.0, result, 0.01);
+        } catch (QuantityMesurementException e) { }
     }
 
     @Test
     public void givenTwoInchAndTwoAndHalfCM_ShouldReturn3Inch() {
-        Length inch = new Length(Unit.INCH, 2);
-        Length cm = new Length(Unit.CM, 2.5);
-        double result = inch.add(cm);
-        Assert.assertEquals(3.0, result, 0.01);
+        try {
+            Length inch = new Length(Unit.INCH, 2);
+            Length cm = new Length(Unit.CM, 2.5);
+            double result = inch.add(cm);
+            Assert.assertEquals(3.0, result, 0.01);
+        } catch (QuantityMesurementException e) { }
     }
 
     @Test
@@ -252,18 +262,39 @@ public class quantityTest {
 
     @Test
     public void given1TonneAnd1000Gram_ShouldReturn1001000Gram() {
-        Length tonne = new Length(Unit.TONE, 1.0);
-        Length gram = new Length(Unit.GRAM, 1000);
-        double result = tonne.add(gram);
-        Assert.assertEquals(1001000, result, 0.01);
+        try {
+            Length tonne = new Length(Unit.TONE, 1.0);
+            Length gram = new Length(Unit.GRAM, 1000);
+            double result = tonne.add(gram);
+            Assert.assertEquals(1001000, result, 0.01);
+        } catch (QuantityMesurementException e) {}
     }
 
     @Test
     public void given212FAnd100C_ShouldReturnEquals() {
-        Length fahrenheit = new Length(Unit.Fahrenheit, 212);
-        Length celsius = new Length(Unit.Celsius, 100);
+        Length fahrenheit = new Length(Unit.FAHRENHEIT, 1);
+        Length celsius = new Length(Unit.CELSIUS, -17.2222);
         boolean result = fahrenheit.compare(celsius);
         Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given100CAnd212F_ShouldReturnEquals() {
+        Length fahrenheit = new Length(Unit.CELSIUS, 1.0);
+        Length celsius = new Length(Unit.FAHRENHEIT, 33.8);
+        boolean result = fahrenheit.compare(celsius);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given1FAnd1C_ShouldReturnException() {
+        try {
+            Length fahrenheit = new Length(Unit.FAHRENHEIT, 1.0);
+            Length celsius = new Length(Unit.CELSIUS, 1.0);
+            double result = fahrenheit.add(celsius);
+        } catch (QuantityMesurementException e) {
+            Assert.assertEquals(QuantityMesurementException.ExceptionType.NO_SUCH_METHOD, e.exceptionType);
+        }
     }
 
 }

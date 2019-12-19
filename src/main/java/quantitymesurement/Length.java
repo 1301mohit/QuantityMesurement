@@ -17,18 +17,17 @@ public class Length {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Length length = (Length) o;
-        return Double.compare(length.value, value) == 0 &&
-                unit == length.unit;
+        return Double.compare(length.value, value) == 0 && unit == length.unit;
     }
 
-    public double add(Length that) {
-        return unit.add(this, that);
+
+    public double add(Length that) throws QuantityMesurementException {
+        if((this.unit != Unit.FAHRENHEIT && that.unit != Unit.CELSIUS) || (this.unit != Unit.CELSIUS && that.unit != Unit.FAHRENHEIT))
+            return unit.add(this, that);
+        throw new QuantityMesurementException("Method does not exist", QuantityMesurementException.ExceptionType.NO_SUCH_METHOD);
     }
+
 }
