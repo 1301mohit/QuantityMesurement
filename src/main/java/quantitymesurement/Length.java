@@ -28,4 +28,7 @@ public class Length {
                 unit == length.unit;
     }
 
+    public double add(Length that) {
+        return unit.add(this, that);
+    }
 }

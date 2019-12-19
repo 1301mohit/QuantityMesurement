@@ -26,7 +26,7 @@ public class EnumTest {
 
     @Test
     public void given1Yard_ShouldReturn36Inch() {
-        double value = Unit.Yard.getValueInInch(1.0);
+        double value = Unit.YARD.getValueInInch(1.0);
         Assert.assertEquals(36.0, value, 0.01);
     }
 
