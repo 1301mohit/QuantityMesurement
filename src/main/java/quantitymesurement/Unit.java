@@ -11,11 +11,13 @@ public enum Unit {
     }
 
     public boolean compare(Length length1, Length length2) {
-        return Double.compare(length1.unit.value*length1.value, length2.unit.value*length2.value)==0;
+        return true;
+        //return Double.compare(length1.unit.value*length1.value, length2.unit.value*length2.value)==0;
     }
 
     public double getValueInInch(double value) {
         return value*this.value;
+
     }
 
     public double getValueInFahrenheit(double value) { return value*this.value; }
@@ -25,6 +27,7 @@ public enum Unit {
     public double getValueInGram(double value) { return value*this.value; }
 
     public double add(Length length1, Length length2) {
-        return length1.unit.value*length1.value + length2.unit.value*length2.value;
+        return 0.0;
+       //return length1.unit.value*length1.value + length2.unit.value*length2.value;
     }
 }
