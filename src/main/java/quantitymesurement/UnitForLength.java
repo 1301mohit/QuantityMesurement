@@ -16,10 +16,3 @@ public enum UnitForLength implements IUnit {
     }
 
 }
-
-
-//    @Override
-//    public boolean compare(IUnit unit1) {
-//       // return Double.compare(length1.unit1.value*length1.value, length2.unit1.value*length2.value)==0;
-//        return Double.compare()
-//    }

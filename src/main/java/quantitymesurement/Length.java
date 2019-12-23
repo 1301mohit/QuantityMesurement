@@ -11,7 +11,9 @@ public class Length {
         this.value = value;
     }
 
-    public boolean compare(Length that) {
+    public boolean compare(Length that) throws QuantityMesurementException {
+        if( this.unit.getClass() == that.unit.getClass() )
+            throw new QuantityMesurementException("Class not match", QuantityMesurementException.ExceptionType.NO_SUCH_CLASS);
         double firstValue = this.unit.getConvertedValue(this.value);
         double secondValue = that.unit.getConvertedValue(that.value);
         return Double.compare(firstValue, secondValue) == 0;
@@ -26,20 +28,14 @@ public class Length {
     }
 
     public double add(Length that) throws QuantityMesurementException {
-        if ((this.unit != UnitForTemperature.FAHRENHEIT && that.unit != UnitForTemperature.CELSIUS) || (this.unit != UnitForTemperature.CELSIUS && that.unit != UnitForTemperature.FAHRENHEIT)) {
-            double firstValue = this.unit.getConvertedValue(this.value);
-            double secondValue = that.unit.getConvertedValue(that.value);
-            return firstValue + secondValue;
-        }
-        throw new QuantityMesurementException("Method does not exist", QuantityMesurementException.ExceptionType.NO_SUCH_METHOD);
+        if(this.unit.getClass() == that.unit.getClass())
+            throw new QuantityMesurementException("Class not match", QuantityMesurementException.ExceptionType.NO_SUCH_CLASS);
+        if ((this.unit == UnitForTemperature.FAHRENHEIT && that.unit == UnitForTemperature.CELSIUS) || (this.unit == UnitForTemperature.CELSIUS && that.unit == UnitForTemperature.FAHRENHEIT))
+            throw new QuantityMesurementException("Method does not exist", QuantityMesurementException.ExceptionType.NO_SUCH_METHOD);
+        double firstValue = this.unit.getConvertedValue(this.value);
+        double secondValue = that.unit.getConvertedValue(that.value);
+        return firstValue + secondValue;
     }
 
 }
-
-
-//    public double add(Length that) throws QuantityMesurementException {
-//        if((this.unit != Unit.FAHRENHEIT && that.unit != Unit.CELSIUS) || (this.unit != Unit.CELSIUS && that.unit != Unit.FAHRENHEIT))
-//            return unit.add(this, that);
-//        throw new QuantityMesurementException("Method does not exist", QuantityMesurementException.ExceptionType.NO_SUCH_METHOD);
-//    }
 
