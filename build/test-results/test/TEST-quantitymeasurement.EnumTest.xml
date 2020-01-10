@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="quantitymeasurement.EnumTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-12-21T13:15:36" hostname="mohit-Inspiron-15-3567" time="0.005">
+  <properties/>
+  <testcase name="given1Yard_ShouldReturn36Inch" classname="quantitymeasurement.EnumTest" time="0.001"/>
+  <testcase name="given2Inch_ShouldReturn2Inch" classname="quantitymeasurement.EnumTest" time="0.0"/>
+  <testcase name="given1Kg_ShouldReturn1000Gram" classname="quantitymeasurement.EnumTest" time="0.001"/>
+  <testcase name="given5Feet_ShouldReturn60Inch" classname="quantitymeasurement.EnumTest" time="0.0"/>
+  <testcase name="given1Feet_ShouldReturn12Inch" classname="quantitymeasurement.EnumTest" time="0.001"/>
+  <testcase name="given1Celsius_ShouldReturnInFahrenheit" classname="quantitymeasurement.EnumTest" time="0.0"/>
+  <testcase name="given1Tonne_ShouldReturn1000000Gram" classname="quantitymeasurement.EnumTest" time="0.0"/>
+  <testcase name="given1Gallon_ShouldReturnInLiter" classname="quantitymeasurement.EnumTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
